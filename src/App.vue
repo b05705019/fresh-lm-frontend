@@ -4,10 +4,12 @@
       :category=category 
       :score=score
       :songName=songName
+      :finalScore=finalScore
       @clickOns70="clickOns70" 
       @clickOns80="clickOns80"
       @clickOns90="clickOns90"
       @clickOns00="clickOns00"
+      @collectScore="collectScore"
     />
   </div>
 </template>
@@ -20,6 +22,7 @@ export default {
     return {
       category: 2,
       score: 0,
+      finalScore: 120,
 			songName: [
 				['告白氣球', '浪費', '演員', '我難過'],
 				['說愛你', '演員', '我難過', '溫柔'],
@@ -46,6 +49,10 @@ export default {
     clickOns00(data) {
       this.category = data;
       console.log('category: ', this.category);
+    },
+    collectScore(data) {
+      this.score = this.score + data;
+      this.finalScore = this.finalScore + this.score;
     }
   }
 }

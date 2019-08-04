@@ -8,15 +8,40 @@
 				<li>請在下一頁輸入您要加入的群組密碼與暱稱。</li>
 			</ul>
 		</div>
+		<audio :src=audio[category][0] class="audio_0" />
+		<audio :src=audio[category][1] class="audio_1" />
+		<audio :src=audio[category][2] class="audio_2" />
+		<audio :src=audio[category][3] class="audio_3" />
 		<router-link to="/Play"><button class="rule-next">next</button></router-link>
 	</div>
 </template>
 
 <script>
+import balloon from '../assets/balloon.mp3';
+import waste from '../assets/waste.mp3';
+import actor from '../assets/actor.mp3';
+import sad from '../assets/sad.mp3';
+import loveyou from '../assets/loveyou.mp3';
+import tender from '../assets/tender.mp3';
+import whatwrong from '../assets/whatwrong.mp3';
+
 export default {
 	name: 'Rule',
-	components: {
-			
+	props: {
+		category: Number,
+		songName: Array
+	},
+	data: function() {
+		return {
+			audio: [
+				[balloon, waste, actor, sad],
+				[loveyou, actor, sad, tender],
+				[tender, balloon, waste, loveyou],
+				[waste, whatwrong, sad, actor]
+			]
+		}
+	},
+	components: {		
 	}
 }
 </script>
