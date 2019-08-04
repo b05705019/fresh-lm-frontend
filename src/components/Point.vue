@@ -8,7 +8,7 @@
 		<div class="point-text-container">
 			<div class="point-text"><span class="point-play">Play</span> and <br/> get <span class="point-1">1</span> Line point.</div>
 		</div>
-		<router-link to="/Rule"><button class="point-next">next</button></router-link>
+		<router-link to="/Info"><button class="point-next">next</button></router-link>
 	</div>
 </template>
 
@@ -33,7 +33,7 @@ export default {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	height: 97vh;
+	height: 100vh;
 	font-family: 'Comfortaa', cursive;
 }
 .point-content {

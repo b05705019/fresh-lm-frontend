@@ -1,4 +1,4 @@
-import InputInfo from './components/InputInfo';
+import Info from './components/Info';
 import PageNotFound from './components/PageNotFound';
 import Play from './components/Play';
 import Point from './components/Point';
@@ -9,7 +9,7 @@ const routes = [
     { path: '/', redirect: '/Point' },
     { path:'/Point', component: Point },
     { path: '/Rule', component: Rule },
-    { path: '/InputInfo', component: InputInfo },
+    { path: '/Info', component: Info },
     { path: '/Play', component: Play },
     { path: '/Ranking', component: Ranking },
     { path: '*', component: PageNotFound }

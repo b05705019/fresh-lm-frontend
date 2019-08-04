@@ -8,7 +8,7 @@
 				<li>請在下一頁輸入您要加入的群組密碼與暱稱。</li>
 			</ul>
 		</div>
-		<router-link to="/InputInfo"><button class="rule-next">next</button></router-link>
+		<router-link to="/Play"><button class="rule-next">next</button></router-link>
 	</div>
 </template>
 
@@ -28,7 +28,7 @@ export default {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	height: 97vh;
+	height: 100vh;
 }
 .rule-title-text {
 	font-size: 3em;
@@ -50,7 +50,7 @@ export default {
 	/* background: red; */
 }
 .rule-title-content li {
-	margin: 1em 0;
+	margin: 1em 0.5em 1em 0;
 	/* background: red; */
 }
 .rule-next {

@@ -1,6 +1,14 @@
 <template>
   <div id="app">
-    <router-view />
+    <router-view 
+      :category=category 
+      :score=score
+      :songName=songName
+      @clickOns70="clickOns70" 
+      @clickOns80="clickOns80"
+      @clickOns90="clickOns90"
+      @clickOns00="clickOns00"
+    />
   </div>
 </template>
 
@@ -8,13 +16,44 @@
 
 export default {
   name: 'App',
+  data: function() {
+    return {
+      category: 2,
+      score: 0,
+			songName: [
+				['告白氣球', '浪費', '演員', '我難過'],
+				['說愛你', '演員', '我難過', '溫柔'],
+				['溫柔', '告白氣球', '浪費', '說愛你'],
+				['浪費', '怎麼了', '我難過', '演員']
+			]
+    }
+  },
   components: {
+  },
+  methods: {
+    clickOns70(data) {
+      this.category = data;
+      console.log('category: ', this.category);
+    },
+    clickOns80(data) {
+      this.category = data;
+      console.log('category: ', this.category);
+    },
+    clickOns90(data) {
+      this.category = data;
+      console.log('category: ', this.category);
+    },
+    clickOns00(data) {
+      this.category = data;
+      console.log('category: ', this.category);
+    }
   }
 }
 </script>
 
 <style>
 body {
+  margin: 0;
   background: black;
   color: white;
 }
