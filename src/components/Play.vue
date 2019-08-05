@@ -137,6 +137,8 @@ export default {
 				audio_playing = this.$el.querySelector('.audio_'+this.ongoingSong);
 				audio_playing.play();
 			}
+
+			this.inputContent = '';
 		}
 	}
 }
