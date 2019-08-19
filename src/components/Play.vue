@@ -105,8 +105,18 @@ export default {
 		}
 			
 	},
+	sockets: {
+        connect: function () {
+            console.log('socket connected')
+        },
+        customEmit: function (data) {
+			this.answers.push({text: data});
+			console.log('this method was fired by the socket server. eg: io.emit("customEmit", data)')
+        }
+    },
 	methods: {
 		submitAnswer() {
+			this.$socket.emit('emit_method', this.inputContent)
 			this.answers.push({text: this.inputContent});
 			this.inputContent = '';
 			var container = this.$el.querySelector(".play-history");
@@ -122,6 +132,7 @@ export default {
 			}
 		}
 	}
+	
 }
 </script>
 
