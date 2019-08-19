@@ -4,19 +4,44 @@
 		<div class="rule-title-content">
 			<ul class="rule-title-content-ul">
 				<li>這是一個音樂遊戲，請確認您的手機裝置音量設定正常。</li>
-				<li>本遊戲將會依照個人答題速度與正確性，給予相對應的額外獎勵。</li>
-				<li>請在下一頁輸入您要加入的群組密碼與暱稱。</li>
+				<li>遊戲中，請輸入正確的歌曲名稱。</li>
+				<li>累積30首歌曲將可以兌換1點的line point。</li>
 			</ul>
 		</div>
+		<audio :src=audio[category][0] class="audio_0" />
+		<audio :src=audio[category][1] class="audio_1" />
+		<audio :src=audio[category][2] class="audio_2" />
+		<audio :src=audio[category][3] class="audio_3" />
 		<router-link to="/Play"><button class="rule-next">next</button></router-link>
 	</div>
 </template>
 
 <script>
+import balloon from '../assets/balloon.mp3';
+import waste from '../assets/waste.mp3';
+import actor from '../assets/actor.mp3';
+import sad from '../assets/sad.mp3';
+import loveyou from '../assets/loveyou.mp3';
+import tender from '../assets/tender.mp3';
+import whatwrong from '../assets/whatwrong.mp3';
+
 export default {
 	name: 'Rule',
-	components: {
-			
+	props: {
+		category: Number,
+		songName: Array
+	},
+	data: function() {
+		return {
+			audio: [
+				[balloon, waste, actor, sad],
+				[loveyou, actor, sad, tender],
+				[tender, balloon, waste, loveyou],
+				[waste, whatwrong, sad, actor]
+			]
+		}
+	},
+	components: {		
 	}
 }
 </script>

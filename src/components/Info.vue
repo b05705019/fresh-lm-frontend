@@ -7,47 +7,44 @@
 				<div class="profile-right">
 					<div class="info-nums">
 						<div class="profile-info">
-							<div class="info-num">001</div>
-							<div class="info-level-text">等級</div>
+							<div class="info-num">{{finalScore}}</div>
+							<div class="info-num-text">累積歌曲</div>
 						</div>
 						<div class="profile-info">
-							<div class="info-num">032</div>
-							<div class="info-score-text">總積分</div>
-						</div>
-						<div class="profile-info">
-							<div class="info-num">020</div>
-							<div class="info-linepoints-text">可兌換</div>
+							<div class="info-num">150</div>
+							<div class="info-num-text">可兌換額度</div>
 						</div>
 					</div>
 					<button class="info-exchange-button">兌換 Line points</button>
+					<div class="info-hint">30首歌可兌換 1 Line point</div>
 				</div>
 			</div>
 		</div>
 		<div class="info-category">
 			<div class="category-text">類別</div>
 			<div class="categories">
-				<router-link class="info-router" to="/Play">
+				<router-link class="info-router" to="/Rule">
 					<div class="category-button s70" @click="clickOns70">
 						<div class="category-button-text">柒零年代</div>
 						<div class="category-button-subtext">經典傳唱</div>
 						<img class="category-button-img" :src=BoomBox />
 					</div>
 				</router-link>
-				<router-link class="info-router" to="/Play">
+				<router-link class="info-router" to="/Rule">
 					<div class="category-button s80" @click="clickOns80">
 						<div class="category-button-text">捌零年代</div>
 						<div class="category-button-subtext">精選金曲</div>
 						<img class="category-button-img" :src=MusicPlayer />
 					</div>
 				</router-link>
-				<router-link class="info-router" to="/Play">
+				<router-link class="info-router" to="/Rule">
 					<div class="category-button s90" @click="clickOns90">
 						<div class="category-button-text">玖零年代</div>
 						<div class="category-button-subtext">余憶童稚</div>
 						<img class="category-button-img" :src=Disc />
 					</div>
 				</router-link>
-				<router-link class="info-router" to="/Play">
+				<router-link class="info-router" to="/Rule">
 					<div class="category-button s00" @click="clickOns00">
 						<div class="category-button-text">零零年代</div>
 						<div class="category-button-subtext">我還年輕</div>
@@ -69,7 +66,8 @@ import Disc from '../assets/disc.png';
 export default {
 	name: 'info',
 	props: {
-		category: Number
+		category: Number,
+		finalScore: Number
 	},
 	data: function() {
 		return {
@@ -115,7 +113,13 @@ export default {
 .info-name {
 	font-size: 1.8em;
 	font-family: 'Comfortaa', cursive;
-	margin: 0 10px 10px 0;
+	margin: 0 10px 20px 0;
+}
+.info-hint {
+	margin: 1vw;
+	font-size: 0.8em;
+	font-family: 'Comfortaa', cursive;
+	color: grey;
 }
 .personalInfo {
 	width: 100%;
@@ -125,7 +129,7 @@ export default {
 	justify-content: center;
 	align-items: flex-start;
 	background: black;
-	padding: 5vh 0 5vh 20vw;
+	padding: 3vh 0 5vh 20vw;
 	/* border-bottom-left-radius: 30px; */
 	/* border-bottom-right-radius: 30px; */
 	/* background: green; */
@@ -134,7 +138,7 @@ export default {
 	background: rgb(255, 255, 255);
 	border: rgb(14, 224, 114) solid 3.5px;
 	border-radius: 50%;
-	width: 22vw;
+	width: 27vw;
 	/* margin-right: 5vw; */
 }
 .info-scores {
@@ -145,17 +149,21 @@ export default {
 	width: 85%;
 	/* background: red; */
 }
+.info-num-text {
+	font-size: 0.8em;
+}
 .profile-right {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	/* margin-left: 3vw; */
+	/* background: green; */
 }
 .info-nums {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: space-around;
 	align-items: center;
 	font-family: 'Noto Sans TC', sans-serif;
 	width: 100%;
