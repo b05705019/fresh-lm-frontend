@@ -90,14 +90,14 @@ export default {
 		}
 	},
 	mounted() {
-		// this.$socket.emit('join', 'sss')
+		this.$socket.emit('join', 'sss')
 		this.interval = setInterval(() => {
 			this.timeout = this.timeout - 1;
 			this.timeoutBarLen = this.timeoutBarLen - 1.2;
 			this.timeoutBar.width = this.timeoutBarLen+'%';
 		}, 1000);
 		var audio_0 = this.$el.querySelector('.audio_0');
-		audio_0.play();
+		// audio_0.play();
 	},
 	updated() {
 		var answerSituation = this.answerSituation;
@@ -107,33 +107,33 @@ export default {
 		}
 			
 	},
-	// sockets: {
-    //     connect: function () {
-    //         console.log('socket connected')
-    //     },
-    //     customEmit: function (data) {
-	// 		this.answers.push({text: data});
-	// 		console.log('this method was fired by the socket server. eg: io.emit("customEmit", data)')
-	// 	},
-	// 	start: function () {
-	// 		this.answers.push({text: "start"});
-	// 		var audio_0 = this.$el.querySelector('.audio_0');
-	// 		audio_0.play()
-	// 	},
-	// 	nextSong: function () {
-	// 		this.$emit('collectScore', 1);
-	// 		this.answerSituation[this.ongoingSong] = true;
-	// 		var audio_playing = this.$el.querySelector('.audio_'+this.ongoingSong);
-	// 		audio_playing.pause();
-	// 		this.ongoingSong = this.ongoingSong + 1;
-	// 		audio_playing = this.$el.querySelector('.audio_'+this.ongoingSong);
-	// 		audio_playing.play();
-	// 	}
+	sockets: {
+        connect: function () {
+            console.log('socket connected')
+        },
+        customEmit: function (data) {
+			this.answers.push({text: data});
+			console.log('this method was fired by the socket server. eg: io.emit("customEmit", data)')
+		},
+		start: function () {
+			this.answers.push({text: "start"});
+			var audio_0 = this.$el.querySelector('.audio_0');
+			audio_0.play()
+		},
+		nextSong: function () {
+			this.$emit('collectScore', 1);
+			this.answerSituation[this.ongoingSong] = true;
+			var audio_playing = this.$el.querySelector('.audio_'+this.ongoingSong);
+			audio_playing.pause();
+			this.ongoingSong = this.ongoingSong + 1;
+			audio_playing = this.$el.querySelector('.audio_'+this.ongoingSong);
+			audio_playing.play();
+		}
 
-    // },
+    },
 	methods: {
 		submitAnswer() {
-			// this.$socket.emit('emit_method', this.inputContent)
+			this.$socket.emit('emit_method', this.inputContent)
 			this.answers.push({text: this.inputContent});
 			this.inputContent = this.$el.querySelector(".input-text").value;
 			var container = this.$el.querySelector(".play-history");
@@ -155,14 +155,14 @@ export default {
 
 			// string comparison: TODO
 			if(uni_inputCnt == uni_ongoingSong) {
-				// this.$socket.emit('success_method')
-				this.$emit('collectScore', 1);
-				this.answerSituation[this.ongoingSong] = true;
-				var audio_playing = this.$el.querySelector('.audio_'+this.ongoingSong);
-				audio_playing.pause();
-				this.ongoingSong = this.ongoingSong + 1;
-				audio_playing = this.$el.querySelector('.audio_'+this.ongoingSong);
-				audio_playing.play();
+				this.$socket.emit('success_method')
+				// this.$emit('collectScore', 1);
+				// this.answerSituation[this.ongoingSong] = true;
+				// var audio_playing = this.$el.querySelector('.audio_'+this.ongoingSong);
+				// audio_playing.pause();
+				// this.ongoingSong = this.ongoingSong + 1;
+				// audio_playing = this.$el.querySelector('.audio_'+this.ongoingSong);
+				// audio_playing.play();
 			}
 
 			this.inputContent = '';

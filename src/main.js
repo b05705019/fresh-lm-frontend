@@ -10,6 +10,7 @@ Vue.use(new VueSocketIO({
   // options: { path: "/my-app/" } //Optional options
 }))
 
+// Vue.use(VueSocketIO, "http://localhost:5000/")
 Vue.use(VueRouter);
 
 const router = new VueRouter({routes});
