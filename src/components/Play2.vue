@@ -74,12 +74,7 @@ export default {
 				[waste, whatwrong, sad, actor]
 			],
 			answers: [
-				{ text: 'hello!' },
-				{ text: 'hi' },
-				{ text: '答案是什麼？' },
-				{ text: '請問答案是多少？' },
-				{ text: '答案呢答案呢答案呢答案呢答案呢答案呢答案呢答案呢答案呢' },
-				{ text: '說話啊說話啊說話啊說話啊說話啊說話啊說話啊說話啊說話啊說話啊說話啊說話啊說話啊說話啊說話啊' },
+				{ text: '等人' }
 			],
 			inputContent: '',
 			timeout: 60,

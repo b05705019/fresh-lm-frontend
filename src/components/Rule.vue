@@ -12,7 +12,7 @@
 		<audio :src=audio[category][1] class="audio_1" />
 		<audio :src=audio[category][2] class="audio_2" />
 		<audio :src=audio[category][3] class="audio_3" />
-		<router-link to="/Play"><button class="rule-next">next</button></router-link>
+		<router-link to="/Play2"><button class="rule-next">next</button></router-link>
 	</div>
 </template>
 
