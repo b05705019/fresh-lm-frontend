@@ -74,12 +74,12 @@ export default {
 				[waste, whatwrong, sad, actor]
 			],
 			answers: [
-				{ text: 'hello!' },
-				{ text: 'hi' },
-				{ text: '答案是什麼？' },
-				{ text: '請問答案是多少？' },
-				{ text: '答案呢答案呢答案呢答案呢答案呢答案呢答案呢答案呢答案呢' },
-				{ text: '說話啊說話啊說話啊說話啊說話啊說話啊說話啊說話啊說話啊說話啊說話啊說話啊說話啊說話啊說話啊' },
+				{ text: 'hello!' }
+				// { text: 'hi' },
+				// { text: '答案是什麼？' },
+				// { text: '請問答案是多少？' },
+				// { text: '答案呢答案呢答案呢答案呢答案呢答案呢答案呢答案呢答案呢' },
+				// { text: '說話啊說話啊說話啊說話啊說話啊說話啊說話啊說話啊說話啊說話啊說話啊說話啊說話啊說話啊說話啊' },
 			],
 			inputContent: '',
 			timeout: 60,
@@ -139,19 +139,19 @@ export default {
 			var container = this.$el.querySelector(".play-history");
 			container.scrollTop = container.scrollHeight;
 
-			// encode to unicode: TODO
-			var res = [];  
-			for(var i=0; i<this.inputContent.length; i++) {  
-				res[i] = ( "00" + this.inputContent.charCodeAt(i).toString(16) ).slice(-4);  
-			}  
-			var uni_inputCnt = "\\u" + res.join("\\u");
+				// encode to unicode: TODO
+				var res = [];  
+				for(var i=0; i<this.inputContent.length; i++) {  
+					res[i] = ( "00" + this.inputContent.charCodeAt(i).toString(16) ).slice(-4);  
+				}  
+				var uni_inputCnt = "\\u" + res.join("\\u");
 
-			var res2 = [];  
-			var thisSongName_list = this.songName;
-			for(var i=0; i<thisSongName_list[this.category][this.ongoingSong].length; i++) {  
-				res2[i] = ( "00" + thisSongName_list[this.category][this.ongoingSong].charCodeAt(i).toString(16) ).slice(-4);  
-			}  
-			var uni_ongoingSong = "\\u" + res2.join("\\u");
+				var res2 = [];  
+				var thisSongName_list = this.songName;
+				for(var i=0; i<thisSongName_list[this.category][this.ongoingSong].length; i++) {  
+					res2[i] = ( "00" + thisSongName_list[this.category][this.ongoingSong].charCodeAt(i).toString(16) ).slice(-4);  
+				}  
+				var uni_ongoingSong = "\\u" + res2.join("\\u");
 
 			// string comparison: TODO
 			if(uni_inputCnt == uni_ongoingSong) {
@@ -164,8 +164,6 @@ export default {
 				audio_playing = this.$el.querySelector('.audio_'+this.ongoingSong);
 				audio_playing.play();
 			}
-
-			this.inputContent = '';
 		}
 	}
 	
@@ -186,6 +184,7 @@ export default {
 	flex-direction: column;
 	align-items: center;
 	position: relative;
+	margin-bottom: 20px;
 }
 .album-img {
 	width: 100vw;
@@ -199,7 +198,7 @@ export default {
 .play-timeout-container img {
 	width: 18px;
 	position: absolute;
-	bottom: 9%;
+	bottom: 3.5%;
 	left: 20%;
 }
 .play-timeout-bg {
@@ -208,7 +207,7 @@ export default {
 	height: 40px;
 	background: rgba(255, 255, 255, 0.673);
 	/* top: 200px; */
-	bottom: 5%;
+	bottom: 0;
 	border-radius: 50px;
 }
 .play-timeout {
@@ -217,7 +216,7 @@ export default {
 	height: 40px;
 	background: rgb(14, 224, 114);
 	/* top: 200px; */
-	bottom: 5%;
+	bottom: 0;
 	border-radius: 50px;
 }
 .timeout-num {
@@ -226,7 +225,7 @@ export default {
 	position: absolute;
 	width: 50%;
 	height: 40px;
-	bottom: 2.8%;
+	bottom: -2%;
 	left: 78%;
 }
 .play-profile {
@@ -235,6 +234,7 @@ export default {
 	justify-content: center;
 	align-items: center;
 	font-family: 'Noto Sans TC', sans-serif;
+	margin-top: 20px;
 }
 .play-name {
 	font-size: 1.3em;
@@ -280,11 +280,13 @@ export default {
 	height: 90%;
 	margin-left: 5px;
 	/* background: white; */
-	display: flex;
+	/* display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	align-items: flex-start;
+	align-items: flex-start; */
+	display: inline-block;
 	overflow: scroll;
+
 }
 .play-input {
 	display: flex;

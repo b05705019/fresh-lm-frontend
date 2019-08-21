@@ -1,10 +1,10 @@
 <template>
   <div id="point">
-		<div class="point-content">
+		<!-- <div class="point-content">
 			<img :src=plus alt="plus sign" class="point-plus" />
 			<div class="point-icon"><div class="point-icon-text">P</div></div>
 			<div class="point-one">1</div>
-		</div>
+		</div> -->
 		<div class="point-text-container">
 			<div class="point-text"><span class="point-play">Play</span> and <br/> get <span class="point-1">1</span> Line point.</div>
 		</div>
@@ -98,9 +98,11 @@ export default {
 	font-family: 'Comfortaa', cursive;
 	border-radius: 100px;
 	width: 20vw;
+	max-width: 50px;
 	min-width: 90px;
 	height: 10vw;
 	min-height: 50px;
+	max-height: 20px;
 	font-size: 1em;
 }
 </style>

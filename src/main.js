@@ -13,9 +13,12 @@ Vue.use(new VueSocketIO({
 // Vue.use(VueSocketIO, "http://localhost:5000/")
 Vue.use(VueRouter);
 
-const router = new VueRouter({routes});
+const router = new VueRouter({
+	mode: 'history',
+	routes
+});
 
 new Vue({
-  router,
-  render: h => h(App),
+	router,
+	render: h => h(App),
 }).$mount('#app')

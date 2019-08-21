@@ -1,38 +1,37 @@
 <template>
-  	<div id="score">
+	<div id="score">
 		<div class="score-profile">
-            <div class="score-crown-container">
-                <img class="score-crown" :src=Crown alt="" />
-            </div>
-            <div class="score-title">戰果</div>
-            <img class="score-img" :src=Belle alt="Belle Chou" />
-            <div class="score-name">Belle Chou</div>
-            <div class="score-container">
-                <div class="score-info">
-                    <div class="score-info-num score-single-num">{{score}}</div>
-                    <div class="score-info-text">單場積分</div>
-                </div>
-                <div class="score-info">
-                    <div class="score-info-num">{{finalScore}}</div>
-                    <div class="score-info-text">累計歌曲</div>
-                </div>
-                <div class="score-info">
-                    <div class="score-info-num">180</div>
-                    <div class="score-info-text">可兌換額度</div>
-                </div>
-            </div>
-        </div>
+			<div class="score-crown-container">
+				<img class="score-crown" :src=Crown alt="" />
+			</div>
+			<div class="score-title">戰果</div>
+			<img class="score-img" :src=Belle alt="Belle Chou" />
+			<div class="score-name">Belle Chou</div>
+			<div class="score-container">
+				<div class="score-info">
+					<div class="score-info-num score-single-num">{{score}}</div>
+					<div class="score-info-text">單場積分</div>
+				</div>
+				<div class="score-info">
+					<div class="score-info-num">{{finalScore}}</div>
+					<div class="score-info-text">累計歌曲</div>
+				</div>
+				<div class="score-info">
+					<div class="score-info-num">180</div>
+					<div class="score-info-text">可兌換額度</div>
+				</div>
+			</div>
+		</div>
 
-        <div class="score-songs">
-            <div class="score-songs-title">再聽一次</div>
-            <div class="score-songs-content" v-for="item in song_list" :key=item >
-                <img :src=JJLin alt="album"/>
-                <div class="score-song-text">{{item}}</div>
-            </div>
-
-        </div>
+		<div class="score-songs">
+			<div class="score-songs-title">再聽一次</div>
+			<div class="score-songs-content" v-for="item in song_list" :key=item >
+				<img :src=JJLin alt="album"/>
+				<div class="score-song-text">{{item}}</div>
+			</div>
+		</div>
 		<!-- <router-link to="/Ranking">To point</router-link> -->
-        <button class="score-ok">OK</button>
+		<button class="score-ok">OK</button>
 	</div>
 </template>
 
@@ -78,6 +77,7 @@ export default {
 .score-profile {
     color: rgb(0, 162, 162);
     width: 90%;
+	max-height: 350px;
     border-radius: 16px;
     background: linear-gradient(to bottom, rgb(57, 255, 252) 20%, rgb(0, 255, 195) 80%);
 
@@ -96,13 +96,15 @@ export default {
     font-size: 1.5em;
 }
 .score-crown-container {
-    width: 30vw;
+    width: 30%;
+	height: 25%;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
 }
 .score-crown {
-    width: 10vw;
+    width: 30px;
+	height: 30px;
     transform: rotate(25deg);
 }
 .score-img {
@@ -118,6 +120,7 @@ export default {
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-end;
+	margin: 10px;
 }
 .score-info {
     display: flex;

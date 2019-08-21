@@ -57,6 +57,7 @@ export default {
 }
 .rule-title-text {
 	font-size: 3em;
+	margin-top: 60px;
 }
 .rule-title-left {
 	color: rgb(14, 224, 114);
@@ -86,8 +87,10 @@ export default {
 	font-family: 'Comfortaa', cursive;
 	border-radius: 100px;
 	width: 20vw;
+	max-width: 50px;
 	min-width: 90px;
 	height: 10vw;
+	max-height: 20px;
 	min-height: 50px;
 	font-size: 1em;
 }
