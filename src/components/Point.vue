@@ -7,6 +7,7 @@
 		</div> -->
 		<div class="point-text-container">
 			<div class="point-text"><span class="point-play">Play</span> and <br/> get <span class="point-1">1</span> Line point.</div>
+			<button @click="getProfile()">Get Profile</button>
 		</div>
 		<router-link to="/Info"><button class="point-next">next</button></router-link>
 	</div>
@@ -23,6 +24,16 @@ export default {
 	},
 	components: {
 
+	},
+	methods: {
+		getProfile () {
+			let _this = this
+			this.$liff.getProfile().then(function (profile) {
+				_this.profile = profile
+			}).catch(function (error) {
+				alert('Error getting profile: ' + error)
+			})
+		}
 	}
 }
 </script>

@@ -3,7 +3,8 @@ import App from './App.vue'
 import VueRouter from 'vue-router';
 import routes from './router.js';
 import VueSocketIO from 'vue-socket.io'
-
+Vue.prototype.$liff = window.liff
+console.log(window.liff)
 Vue.use(new VueSocketIO({
   debug: true,
   connection: 'https://beta-fresh-linemusic-game.herokuapp.com/'
@@ -14,7 +15,8 @@ Vue.use(new VueSocketIO({
 Vue.use(VueRouter);
 
 const router = new VueRouter({
-	mode: 'history',
+  mode: 'history',
+  base: '/dist/',
 	routes
 });
 
