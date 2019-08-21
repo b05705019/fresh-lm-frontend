@@ -6,7 +6,7 @@ import VueSocketIO from 'vue-socket.io'
 
 Vue.use(new VueSocketIO({
   debug: true,
-  connection: 'http://localhost:5000'
+  connection: 'https://beta-fresh-linemusic-game.herokuapp.com/'
   // options: { path: "/my-app/" } //Optional options
 }))
 
