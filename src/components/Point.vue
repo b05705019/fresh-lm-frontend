@@ -27,13 +27,24 @@ export default {
 	},
 	methods: {
 		getProfile () {
-			let _this = this
-			this.$liff.getProfile().then(function (profile) {
+			liff.getProfile().then(function (profile) {
 				_this.profile = profile
 			}).catch(function (error) {
 				alert('Error getting profile: ' + error)
 			})
 		}
+	},
+	mounted() {
+		liff.init(res => {
+			console.log(res.context.userId)
+			this.userId = res.context.userId;
+			this.token = liff.getAccessToken();
+			this.getUserStatus(this.token);
+		},
+		err => {
+			this.token="";
+			console.log(err);
+		})
 	}
 }
 </script>
