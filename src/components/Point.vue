@@ -7,8 +7,8 @@
 		</div> -->
 		<div class="point-text-container">
 			<div class="point-text"><span class="point-play">Play</span> and <br/> get <span class="point-1">1</span> Line point.</div>
-			<button @click="getProfile()">Get Profile</button>
-			<h3>{{msg}}</h3>
+			<!-- <button @click="getProfile()">Get Profile</button> -->
+			<!-- <h3>{{msg}}</h3> -->
 		</div>
 		<router-link to="/Info"><button class="point-next">next</button></router-link>
 	</div>
@@ -21,38 +21,38 @@ export default {
 	data: function() {
 		return {
 			plus,
-			msg: 'Hello'
+			// msg: 'Hello'
 		}
 	},
 	components: {
 
 	},
-	methods: {
-		getProfile () {
-			this.msg = 'kkk'
-			liff.init(res => {
-				this.msg = 'ininit'
-				this.userId = res.context.userId;
-				this.msg = res.context.userId
-				liff.getProfile()
-					.then(profile => {
-					const name = profile.displayName
-					this.msg = 'msg= ' + profile.displayName
-				})
-					.catch((err) => {
-						console.log('error', err);
-						alert(err);
-				});
-				// this.token = liff.getAccessToken();
-				// this.getUserStatus(this.token);
-			},
-			err => {
-				this.token="";
-				console.log(err);
-				alert("in init error")
-			})
-		}
-	}
+	// methods: {
+	// 	getProfile () {
+	// 		// this.msg = 'kkk'
+	// 		liff.init(res => {
+	// 			// this.msg = 'ininit'
+	// 			// this.userId = res.context.userId;
+	// 			// this.msg = res.context.userId
+	// 			liff.getProfile()
+	// 				.then(profile => {
+	// 				const name = profile.displayName
+	// 				this.msg = profile.pictureUrl + profile.displayName
+	// 			})
+	// 				.catch((err) => {
+	// 					console.log('error', err);
+	// 					alert(err);
+	// 			});
+	// 			// this.token = liff.getAccessToken();
+	// 			// this.getUserStatus(this.token);
+	// 		},
+	// 		err => {
+	// 			this.token="";
+	// 			console.log(err);
+	// 			alert("in init error")
+	// 		})
+	// 	}
+	// }
 }
 </script>
 

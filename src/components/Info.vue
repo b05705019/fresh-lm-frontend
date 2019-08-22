@@ -1,9 +1,9 @@
 <template>
   <div id="info">
 		<div class="personalInfo">
-			<div class="info-name">Belle Chou</div>
+			<div class="info-name">{{$name}}</div>
 			<div class="info-scores">
-				<img class="profile-img" :src=Belle alt="profile picture">
+				<img class="profile-img" :src="$imgSrc" alt="profile picture">
 				<div class="profile-right">
 					<div class="info-nums">
 						<div class="profile-info">

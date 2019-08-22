@@ -18,10 +18,6 @@
 
 export default {
   name: 'App',
-  beforeCreate () {
-    // console.log(this.$liff)
-    // this.$liff.init(function (data) {})
-  },
   data: function() {
     return {
       category: 2,

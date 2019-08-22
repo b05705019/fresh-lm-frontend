@@ -10,9 +10,9 @@
 			</div>
 		</div>
 		<div class="play-profile">
-			<img :src=Belle alt="profile picture" />
+			<img :src="$imgSrc" alt="profile picture" />
 			<div class="play-profile-info">
-				<div class="play-name">Belle Chou</div>
+				<div class="play-name">{{$name}}</div>
 				<div>累計歌曲：{{finalScore}}</div>
 			</div>
 			<div class="play-score"><span>{{score}}</span>分</div>
@@ -74,23 +74,30 @@ export default {
 				[waste, whatwrong, sad, actor]
 			],
 			answers: [
-				{ text: '等人' }
+				{ text: '歌曲播放後請於下方輸入歌名' },
+				{ text: '等待其他玩家進場' }
 			],
 			inputContent: '',
 			timeout: 60,
 			timeoutBarLen: 72,
 			timeoutBar: { width: '72%' },
 			ongoingSong: 0,
-			answerSituation: [false, false, false, false]
+			answerSituation: [false, false, false, false],
+			players: [
+				{
+					imgSrc: this.$imgSrc,
+					name: this.$name
+				}
+			]
 		}
 	},
 	mounted() {
-		this.$socket.emit('join', 'sss')
-		this.interval = setInterval(() => {
-			this.timeout = this.timeout - 1;
-			this.timeoutBarLen = this.timeoutBarLen - 1.2;
-			this.timeoutBar.width = this.timeoutBarLen+'%';
-		}, 1000);
+
+		this.$socket.emit('join', {
+			username: this.$name,
+			imgSrc: this.$imgSrc
+		})
+		
 		var audio_0 = this.$el.querySelector('.audio_0');
 		// audio_0.play();
 	},
@@ -106,17 +113,27 @@ export default {
         connect: function () {
             console.log('socket connected')
         },
-        customEmit: function (data) {
+        getText: function (data) {
 			this.answers.push({text: data});
-			console.log('this method was fired by the socket server. eg: io.emit("customEmit", data)')
+			console.log('get text')
+		},
+		getData: function (data) {
+			this.answers.push({text: data.username + ' join'});
+			this.players.push({imgSrc: data.imgSrc, name: data.username});
+			console.log('get data')
 		},
 		start: function () {
 			this.answers.push({text: "start"});
+			this.interval = setInterval(() => {
+				this.timeout = this.timeout - 1;
+				this.timeoutBarLen = this.timeoutBarLen - 1.2;
+				this.timeoutBar.width = this.timeoutBarLen+'%';
+			}, 1000);
 			var audio_0 = this.$el.querySelector('.audio_0');
 			audio_0.play()
 		},
 		nextSong: function () {
-			this.$emit('collectScore', 1);
+			// this.$emit('collectScore', 1);
 			this.answerSituation[this.ongoingSong] = true;
 			var audio_playing = this.$el.querySelector('.audio_'+this.ongoingSong);
 			audio_playing.pause();
@@ -128,7 +145,7 @@ export default {
     },
 	methods: {
 		submitAnswer() {
-			this.$socket.emit('emit_method', this.inputContent)
+			this.$socket.emit('submit', this.inputContent)
 			this.answers.push({text: this.inputContent});
 			this.inputContent = this.$el.querySelector(".input-text").value;
 			var container = this.$el.querySelector(".play-history");
@@ -151,13 +168,13 @@ export default {
 			// string comparison: TODO
 			if(uni_inputCnt == uni_ongoingSong) {
 				this.$socket.emit('success_method')
-				// this.$emit('collectScore', 1);
-				// this.answerSituation[this.ongoingSong] = true;
-				// var audio_playing = this.$el.querySelector('.audio_'+this.ongoingSong);
-				// audio_playing.pause();
-				// this.ongoingSong = this.ongoingSong + 1;
-				// audio_playing = this.$el.querySelector('.audio_'+this.ongoingSong);
-				// audio_playing.play();
+				this.$emit('collectScore', 1);
+				this.answerSituation[this.ongoingSong] = true;
+				var audio_playing = this.$el.querySelector('.audio_'+this.ongoingSong);
+				audio_playing.pause();
+				this.ongoingSong = this.ongoingSong + 1;
+				audio_playing = this.$el.querySelector('.audio_'+this.ongoingSong);
+				audio_playing.play();
 			}
 
 			this.inputContent = '';
