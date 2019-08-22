@@ -93,7 +93,9 @@ export default {
 			this.$emit('clickOns00', 3);
 		}
 
-	}
+	},
+
+	
 }
 </script>
 

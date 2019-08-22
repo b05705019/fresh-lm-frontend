@@ -8,6 +8,7 @@
 		<div class="point-text-container">
 			<div class="point-text"><span class="point-play">Play</span> and <br/> get <span class="point-1">1</span> Line point.</div>
 			<button @click="getProfile()">Get Profile</button>
+			<h3>{{msg}}</h3>
 		</div>
 		<router-link to="/Info"><button class="point-next">next</button></router-link>
 	</div>
@@ -19,7 +20,8 @@ export default {
 	name: 'Point',
 	data: function() {
 		return {
-			plus
+			plus,
+			msg: 'Hello'
 		}
 	},
 	components: {
@@ -27,24 +29,29 @@ export default {
 	},
 	methods: {
 		getProfile () {
-			liff.getProfile().then(function (profile) {
-				_this.profile = profile
-			}).catch(function (error) {
-				alert('Error getting profile: ' + error)
+			this.msg = 'kkk'
+			liff.init(res => {
+				this.msg = 'ininit'
+				this.userId = res.context.userId;
+				this.msg = res.context.userId
+				liff.getProfile()
+					.then(profile => {
+					const name = profile.displayName
+					this.msg = 'msg= ' + profile.displayName
+				})
+					.catch((err) => {
+						console.log('error', err);
+						alert(err);
+				});
+				// this.token = liff.getAccessToken();
+				// this.getUserStatus(this.token);
+			},
+			err => {
+				this.token="";
+				console.log(err);
+				alert("in init error")
 			})
 		}
-	},
-	mounted() {
-		liff.init(res => {
-			console.log(res.context.userId)
-			this.userId = res.context.userId;
-			this.token = liff.getAccessToken();
-			this.getUserStatus(this.token);
-		},
-		err => {
-			this.token="";
-			console.log(err);
-		})
 	}
 }
 </script>
